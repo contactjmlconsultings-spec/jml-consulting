@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="Cabinet expert QHSE : Consulting, Formation et Audit. ISO 9001, 14001, 45001, HACCP."/>
-<meta name="theme-color" content="#003366"/>
 <title>JML Consulting & Services — Cabinet QHSE</title>
+<meta name="description" content="Cabinet expert QHSE : Consulting, Formation et Audit. ISO 9001, 14001, 45001, HACCP."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -47,7 +46,7 @@ h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700}
 h3{font-size:clamp(1.1rem,2vw,1.4rem);font-weight:600}
 p{color:var(--gray-600);font-size:1rem}
 a{text-decoration:none;color:inherit}
-img{max-width:100%;display:block;height:auto}
+img{max-width:100%;display:block}
 ul{list-style:none}
 button{cursor:pointer;font-family:'IBM Plex Sans',sans-serif}
 
@@ -114,7 +113,7 @@ button{cursor:pointer;font-family:'IBM Plex Sans',sans-serif}
 .nav-search{display:flex;align-items:center;margin-left:auto;gap:0}
 .nav-search-wrap{display:flex;border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;background:var(--off-white)}
 .nav-search-type{border:none;background:transparent;padding:0 0.8rem;font-size:0.8rem;color:var(--gray-600);border-right:1px solid var(--gray-200);height:36px;cursor:pointer;font-family:'IBM Plex Sans',sans-serif}
-.nav-search-input{border:none;background:transparent;padding:0 0.8rem;font-size:0.85rem;width:200px;outline:none;font-family:'IBM Plex Sans',sans-serif;color:var(--text);height:36px}
+.nav-search-input{border:none;background:transparent;padding:0 0.8rem;font-size:0.85rem;width:200px;outline:none;font-family:'IBM Plex Sans',sans-serif;color:var(--text)}
 .nav-search-btn{background:var(--navy);border:none;color:var(--white);padding:0 0.9rem;height:36px;font-size:0.85rem;transition:var(--transition)}
 .nav-search-btn:hover{background:var(--navy-mid)}
 
@@ -414,10 +413,6 @@ footer{background:var(--navy-dark);color:var(--white);padding:60px 0 0}
 .page-title-section{padding:2.5rem 0 1rem;border-bottom:1px solid var(--gray-200);margin-bottom:2rem}
 .page-title-section h2{font-size:1.6rem}
 
-/* OPTIMISATION : Lazy loading placeholders */
-.placeholder-img{background:var(--gray-100);animation:pulse 2s infinite;height:200px}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
-
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:1024px){
   .services-grid,.formation-grid,.product-grid,.article-grid,.testi-grid{grid-template-columns:repeat(2,1fr)}
@@ -440,7 +435,7 @@ footer{background:var(--navy-dark);color:var(--white);padding:60px 0 0}
   .process-grid{grid-template-columns:1fr}
   .form-grid-2{grid-template-columns:1fr}
   .nav-main,.nav-search{display:none}
-  .nav-main.open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--white);z-index:9999;align-items:center;justify-content:center;gap:2rem;overflow-y:auto}
+  .nav-main.open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--white);z-index:9999;align-items:center;justify-content:center;gap:2rem}
   .nav-main.open .nav-link{height:auto;padding:0.8rem 2rem;font-size:1.1rem;border:none}
   .nav-main.open .dropdown{display:none}
   .hamburger{display:flex}
@@ -452,17 +447,6 @@ footer{background:var(--navy-dark);color:var(--white);padding:60px 0 0}
   .hero-actions{flex-direction:column}
   .btn{justify-content:center}
   .resume-grid{grid-template-columns:1fr}
-  .nav-search-wrap{max-width:100%}
-}
-
-/* ACCESSIBILITY */
-@media (prefers-reduced-motion: reduce) {
-  * {animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-}
-@media (prefers-color-scheme: dark) {
-  body { background: #0f1419; color: #e0e0e0; }
-  .white, .off-white { background: #1a1f26; }
-  .card { background: #252d38; }
 }
 </style>
 </head>
@@ -473,111 +457,1048 @@ footer{background:var(--navy-dark);color:var(--white);padding:60px 0 0}
   <div class="container topbar-inner">
     <div class="topbar-left">
       <a href="tel:+33784767930">📞 +33 7 84 76 79 30</a>
-      <span style="color:rgba(255,255,255,0.6);cursor:pointer" onclick="revealEmail(this)" title="Cliquez pour afficher l'e-mail">✉ <span id="topbarEmail">contact.jmlconsultings [cliquez]</span></span>
+      <span style="color:rgba(255,255,255,0.6)">✉ <span id="topbarEmail"></span></span>
     </div>
     <div class="topbar-right">
-      <a href="#" onclick="showPage('connexion');return false">👤 Mon compte</a>
-      <a href="#" onclick="showPage('panier');return false">🛒 Panier <span class="cart-badge" id="cartCount">0</span></a>
+      <a href="#" onclick="showPage('connexion')">👤 Mon compte</a>
+      <a href="#" onclick="showPage('panier')">🛒 Panier <span class="cart-badge" id="cartCount">0</span></a>
     </div>
   </div>
 </div>
 
 <!-- ═══════════════ NAVBAR ═══════════════ -->
-<nav class="navbar" role="navigation" aria-label="Navigation principale">
+<nav class="navbar">
   <div class="container navbar-inner">
-    <a class="logo" href="#" onclick="showPage('accueil');return false" aria-label="Accueil">
+    <a class="logo" href="#" onclick="showPage('accueil')">
       <span class="logo-name">JML<span> Consulting</span></span>
       <span class="logo-sub">& Services · QHSE</span>
     </a>
 
-    <div class="nav-main" id="navMain" role="menubar">
-      <div class="nav-item" role="menuitem"><a class="nav-link" href="#" onclick="showPage('consulting');return false">Consulting</a></div>
-      <div class="nav-item" role="menuitem"><a class="nav-link" href="#">Formations <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></a>
-        <div class="dropdown" role="menu">
+    <div class="nav-main" id="navMain">
+      <div class="nav-item">
+        <a class="nav-link" href="#" onclick="showPage('consulting')">Consulting</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#">Formations <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></a>
+        <div class="dropdown">
           <div class="dropdown-inner">
-            <div class="dropdown-col"><h5>Par thématique</h5><a href="#" onclick="showPage('formations');return false">Qualité (ISO 9001)</a><a href="#" onclick="showPage('formations');return false">Sécurité (ISO 45001)</a><a href="#" onclick="showPage('formations');return false">Environnement (ISO 14001)</a><a href="#" onclick="showPage('formations');return false">Hygiène alimentaire</a><a href="#" onclick="showPage('formations');return false">Audit interne</a><a class="dropdown-all" href="#" onclick="showPage('formations');return false">Voir tout le catalogue →</a></div>
-            <div class="dropdown-col"><h5>Par format</h5><a href="#" onclick="showPage('formations');return false">Présentiel</a><a href="#" onclick="showPage('formations');return false">Distanciel</a><a href="#" onclick="showPage('formations');return false">Mixte</a><a href="#" onclick="showPage('formations');return false">Intra-entreprise</a><a href="#" onclick="showPage('formations');return false">Sur-mesure</a></div>
-            <div class="dropdown-col"><div class="dropdown-promo"><strong>-20%</strong><span>sur les formations<br>en groupe (5+)</span></div></div>
+            <div class="dropdown-col">
+              <h5>Par thématique</h5>
+              <a href="#" onclick="showPage('formations');filterFormations('qualite')">Qualité (ISO 9001)</a>
+              <a href="#" onclick="showPage('formations');filterFormations('securite')">Sécurité (ISO 45001)</a>
+              <a href="#" onclick="showPage('formations');filterFormations('environnement')">Environnement (ISO 14001)</a>
+              <a href="#" onclick="showPage('formations');filterFormations('alimentaire')">Hygiène alimentaire</a>
+              <a href="#" onclick="showPage('formations');filterFormations('audit')">Audit interne</a>
+              <a class="dropdown-all" href="#" onclick="showPage('formations')">Voir tout le catalogue →</a>
+            </div>
+            <div class="dropdown-col">
+              <h5>Par format</h5>
+              <a href="#" onclick="showPage('formations')">Présentiel</a>
+              <a href="#" onclick="showPage('formations')">Distanciel</a>
+              <a href="#" onclick="showPage('formations')">Mixte</a>
+              <a href="#" onclick="showPage('formations')">Intra-entreprise</a>
+              <a href="#" onclick="showPage('formations')">Sur-mesure</a>
+            </div>
+            <div class="dropdown-col">
+              <div class="dropdown-promo">
+                <strong>-20%</strong>
+                <span>sur les formations<br>en groupe (5+)</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="nav-item" role="menuitem"><a class="nav-link" href="#">Boutique <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></a>
-        <div class="dropdown" role="menu">
+      <div class="nav-item">
+        <a class="nav-link" href="#">Boutique <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></a>
+        <div class="dropdown">
           <div class="dropdown-inner" style="grid-template-columns:1fr 1fr 1fr">
-            <div class="dropdown-col"><h5>Catégories</h5><a href="#" onclick="showPage('boutique');return false">Guides & check-lists</a><a href="#" onclick="showPage('boutique');return false">Modèles de documents</a><a href="#" onclick="showPage('boutique');return false">Kits de démarrage</a><a href="#" onclick="showPage('boutique');return false">Abonnements</a><a class="dropdown-all" href="#" onclick="showPage('boutique');return false">Voir la boutique →</a></div>
-            <div class="dropdown-col"><h5>Populaires</h5><a href="#" onclick="showPage('boutique');return false">Guide ISO 9001</a><a href="#" onclick="showPage('boutique');return false">Pack DUER complet</a><a href="#" onclick="showPage('boutique');return false">Kit Auditeur interne</a><a href="#" onclick="showPage('boutique');return false">Check-list ISO 14001</a></div>
-            <div class="dropdown-col"><div class="dropdown-promo" style="background:var(--navy);border-color:rgba(232,160,32,0.3)"><strong style="color:var(--accent)">149€</strong><span style="color:rgba(255,255,255,0.5)">Pack Démarrage<br>ISO 9001 complet</span><a class="dropdown-all" href="#" onclick="showPage('boutique');return false" style="color:var(--accent)">Voir le pack →</a></div></div>
+            <div class="dropdown-col">
+              <h5>Catégories</h5>
+              <a href="#" onclick="showPage('boutique')">Guides & check-lists</a>
+              <a href="#" onclick="showPage('boutique')">Modèles de documents</a>
+              <a href="#" onclick="showPage('boutique')">Kits de démarrage</a>
+              <a href="#" onclick="showPage('boutique')">Abonnements</a>
+              <a class="dropdown-all" href="#" onclick="showPage('boutique')">Voir la boutique →</a>
+            </div>
+            <div class="dropdown-col">
+              <h5>Populaires</h5>
+              <a href="#" onclick="showPage('boutique')">Guide ISO 9001</a>
+              <a href="#" onclick="showPage('boutique')">Pack DUER complet</a>
+              <a href="#" onclick="showPage('boutique')">Kit Auditeur interne</a>
+              <a href="#" onclick="showPage('boutique')">Check-list ISO 14001</a>
+            </div>
+            <div class="dropdown-col">
+              <div class="dropdown-promo" style="background:var(--navy);border-color:rgba(232,160,32,0.3)">
+                <strong style="color:var(--accent)">149€</strong>
+                <span style="color:rgba(255,255,255,0.5)">Pack Démarrage<br>ISO 9001 complet</span>
+                <a class="dropdown-all" href="#" onclick="showPage('boutique')" style="color:var(--accent)">Voir le pack →</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="nav-item" role="menuitem"><a class="nav-link" href="#">Ressources <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></a>
-        <div class="dropdown" role="menu">
+      <div class="nav-item">
+        <a class="nav-link" href="#">Ressources <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></a>
+        <div class="dropdown">
           <div class="dropdown-inner" style="grid-template-columns:1fr 1fr">
-            <div class="dropdown-col"><h5>Ressources</h5><a href="#" onclick="showPage('blog');return false">Blog QHSE</a><a href="#" onclick="showPage('blog');return false">Réglementation</a><a href="#" onclick="showPage('blog');return false">Retours d'expérience</a><a href="#" onclick="showPage('blog');return false">Téléchargements gratuits</a></div>
-            <div class="dropdown-col"><h5>Cabinet</h5><a href="#" onclick="showPage('a-propos');return false">À propos de JML</a><a href="#" onclick="showPage('a-propos');return false">Notre équipe</a><a href="#" onclick="showPage('a-propos');return false">Certifications</a><a href="#" onclick="showPage('audit');return false">Audit QHSE</a></div>
+            <div class="dropdown-col">
+              <h5>Ressources</h5>
+              <a href="#" onclick="showPage('blog')">Blog QHSE</a>
+              <a href="#" onclick="showPage('blog')">Réglementation</a>
+              <a href="#" onclick="showPage('blog')">Retours d'expérience</a>
+              <a href="#" onclick="showPage('blog')">Téléchargements gratuits</a>
+            </div>
+            <div class="dropdown-col">
+              <h5>Cabinet</h5>
+              <a href="#" onclick="showPage('a-propos')">À propos de JML</a>
+              <a href="#" onclick="showPage('a-propos')">Notre équipe</a>
+              <a href="#" onclick="showPage('a-propos')">Certifications</a>
+              <a href="#" onclick="showPage('audit')">Audit QHSE</a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="nav-item" role="menuitem"><a class="nav-link" href="#" onclick="showPage('contact');return false">Contact</a></div>
+      <div class="nav-item">
+        <a class="nav-link" href="#" onclick="showPage('contact')">Contact</a>
+      </div>
     </div>
 
     <div class="nav-search">
-      <div class="nav-search-wrap" role="search">
-        <select class="nav-search-type" id="searchType" aria-label="Type de recherche">
+      <div class="nav-search-wrap">
+        <select class="nav-search-type" id="searchType">
           <option value="">Tout</option>
           <option value="formation">Formation</option>
           <option value="boutique">Document</option>
           <option value="blog">Article</option>
         </select>
         <input class="nav-search-input" type="text" id="searchInput" placeholder="Rechercher…" onkeydown="if(event.key==='Enter')doSearch()"/>
-        <button class="nav-search-btn" onclick="doSearch()" aria-label="Lancer la recherche">Rechercher</button>
+        <button class="nav-search-btn" onclick="doSearch()">Rechercher</button>
       </div>
     </div>
 
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()" role="button" aria-label="Menu" aria-expanded="false">
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
   </div>
 </nav>
 
-<!-- PAGES WILL BE INSERTED HERE VIA JAVASCRIPT -->
-<!-- For brevity, I'm creating a minimal structure - full content will follow -->
+<!-- ═══════════════════════════════════════
+     PAGE : ACCUEIL
+═══════════════════════════════════════ -->
+<div class="page active" id="page-accueil">
 
-<div id="pagesContainer"></div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge">🏅 Cabinet expert QHSE</div>
+        <h1>L'<em>excellence QHSE</em> au service de votre performance</h1>
+        <p>JML Consulting & Services vous accompagne dans vos démarches Qualité, Hygiène, Sécurité et Environnement — du diagnostic à la certification.</p>
+        <div class="hero-actions">
+          <button class="btn btn-accent" onclick="showPage('contact')">Demander un audit gratuit →</button>
+          <button class="btn btn-outline-white" onclick="showPage('a-propos')">Découvrir le cabinet</button>
+        </div>
+        <div class="hero-certs">
+          <div class="hero-cert-item"><strong>IRCA</strong> Auditeurs certifiés</div>
+          <div class="hero-cert-item"><strong>PECB</strong> Management Systems</div>
+          <div class="hero-cert-item"><strong>ISO 9001</strong> Référentiel maîtrisé</div>
+          <div class="hero-cert-item"><strong>ISO 45001</strong> Référentiel maîtrisé</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div>
+          <div class="hero-card"><div class="hero-stat-row"><div><div class="hero-stat-num">+200</div><div class="hero-stat-label">Entreprises accompagnées</div></div><div class="hero-stat-icon">🏭</div></div></div>
+          <div class="hero-card"><div class="hero-stat-row"><div><div class="hero-stat-num">98%</div><div class="hero-stat-label">Taux de satisfaction client</div></div><div class="hero-stat-icon">⭐</div></div></div>
+          <div class="hero-card"><div class="hero-stat-row"><div><div class="hero-stat-num">15+</div><div class="hero-stat-label">Années d'expertise QHSE</div></div><div class="hero-stat-icon">🎯</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BARRE DE RECHERCHE -->
+  <div class="search-section">
+    <div class="container">
+      <div class="search-bar-main">
+        <select id="homeSearchType">
+          <option value="">Type de besoin</option>
+          <option value="formation">Formation QHSE</option>
+          <option value="consulting">Consulting</option>
+          <option value="boutique">Document / Guide</option>
+          <option value="audit">Audit</option>
+        </select>
+        <input type="text" id="homeSearchInput" placeholder="Ex. : ISO 9001, HACCP, audit interne, DUER…" onkeydown="if(event.key==='Enter')doHomeSearch()"/>
+        <button onclick="doHomeSearch()">🔍 Rechercher</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 PÔLES -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label">Nos expertises</span>
+      <h2 class="section-title">Trois pôles d'excellence QHSE</h2>
+      <p class="section-sub">Une approche intégrée pour répondre à toutes vos exigences réglementaires et normatives.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-icon">🧩</span>
+          <h3>Consulting QHSE</h3>
+          <p>Accompagnement stratégique pour la mise en place et l'amélioration de vos systèmes de management.</p>
+          <ul>
+            <li>Diagnostic initial et analyse des écarts</li>
+            <li>Déploiement SMQ, SME, SMSS intégré</li>
+            <li>Accompagnement à la certification</li>
+            <li>Veille réglementaire continue</li>
+          </ul>
+          <a class="service-link" href="#" onclick="showPage('consulting')">En savoir plus →</a>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🎓</span>
+          <h3>Formation QHSE</h3>
+          <p>Programmes professionnels pour développer les compétences QHSE de vos équipes.</p>
+          <ul>
+            <li>ISO 9001, 14001, 45001</li>
+            <li>Sensibilisation opérateurs</li>
+            <li>Auditeurs internes</li>
+            <li>Hygiène alimentaire HACCP</li>
+          </ul>
+          <a class="service-link" href="#" onclick="showPage('formations')">Voir le catalogue →</a>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🔍</span>
+          <h3>Audit QHSE</h3>
+          <p>Audits rigoureux pour évaluer la conformité de vos pratiques et identifier vos axes d'amélioration.</p>
+          <ul>
+            <li>Audit interne & audit à blanc</li>
+            <li>Audit fournisseur</li>
+            <li>Audit réglementaire</li>
+            <li>Rapport & plan d'actions</li>
+          </ul>
+          <a class="service-link" href="#" onclick="showPage('audit')">En savoir plus →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-band">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-value" data-target="200" data-suffix="+">0+</div><div class="stat-desc">Entreprises accompagnées</div></div>
+        <div class="stat-item"><div class="stat-value" data-target="15" data-suffix="+">0+</div><div class="stat-desc">Années d'expertise</div></div>
+        <div class="stat-item"><div class="stat-value" data-target="98" data-suffix="%">0%</div><div class="stat-desc">Taux de satisfaction</div></div>
+        <div class="stat-item"><div class="stat-value" data-target="500" data-suffix="+">0+</div><div class="stat-desc">Formations dispensées</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMATIONS À LA UNE -->
+  <section class="section section--bg">
+    <div class="container">
+      <span class="section-label">Formations</span>
+      <h2 class="section-title">Formations à la une</h2>
+      <p class="section-sub">Nos programmes les plus demandés pour développer les compétences QHSE de vos équipes.</p>
+      <div class="formation-grid">
+        <div class="formation-card">
+          <div class="formation-head"><span class="formation-tag">Qualité</span><div class="formation-duration">2j <small>/ 14h</small></div></div>
+          <div class="formation-body">
+            <h3>Sensibilisation ISO 9001:2015</h3>
+            <p>Comprendre les exigences de la norme et les principes du management de la qualité.</p>
+            <div class="formation-meta"><span class="meta-tag">👤 Tout public</span><span class="meta-tag">📍 Présentiel</span></div>
+          </div>
+          <div class="formation-footer"><span class="formation-price">490€ <small>HT / pers.</small></span><button class="btn btn-primary btn-sm" onclick="showPage('formations')">Voir</button></div>
+        </div>
+        <div class="formation-card">
+          <div class="formation-head"><span class="formation-tag">Sécurité</span><div class="formation-duration">3j <small>/ 21h</small></div></div>
+          <div class="formation-body">
+            <h3>ISO 45001 — Management SST</h3>
+            <p>Maîtriser les exigences de la norme ISO 45001 et déployer votre SMSS.</p>
+            <div class="formation-meta"><span class="meta-tag">👤 Responsables HSE</span><span class="meta-tag">📍 Mixte</span></div>
+          </div>
+          <div class="formation-footer"><span class="formation-price">790€ <small>HT / pers.</small></span><button class="btn btn-primary btn-sm" onclick="showPage('formations')">Voir</button></div>
+        </div>
+        <div class="formation-card">
+          <div class="formation-head"><span class="formation-tag">Audit</span><div class="formation-duration">3j <small>/ 21h</small></div></div>
+          <div class="formation-body">
+            <h3>Auditeur interne QHSE</h3>
+            <p>Former vos auditeurs internes à la conduite d'audits selon la norme ISO 19011.</p>
+            <div class="formation-meta"><span class="meta-tag">👤 Auditeurs internes</span><span class="meta-tag">📍 Présentiel</span></div>
+          </div>
+          <div class="formation-footer"><span class="formation-price">890€ <small>HT / pers.</small></span><button class="btn btn-primary btn-sm" onclick="showPage('formations')">Voir</button></div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:2rem"><button class="btn btn-outline" onclick="showPage('formations')">Voir tout le catalogue →</button></div>
+    </div>
+  </section>
+
+  <!-- SECTEURS -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label">Secteurs</span>
+      <h2 class="section-title">Nous intervenons dans tous les secteurs</h2>
+      <p class="section-sub">Notre expertise s'adapte aux spécificités de chaque industrie.</p>
+      <div class="secteurs-grid">
+        <div class="secteur-item"><span class="s-icon">🏭</span><p>Industrie</p></div>
+        <div class="secteur-item"><span class="s-icon">🏗️</span><p>BTP</p></div>
+        <div class="secteur-item"><span class="s-icon">🏥</span><p>Santé</p></div>
+        <div class="secteur-item"><span class="s-icon">🚚</span><p>Logistique</p></div>
+        <div class="secteur-item"><span class="s-icon">🍽️</span><p>Agroalimentaire</p></div>
+        <div class="secteur-item"><span class="s-icon">⚡</span><p>Énergie</p></div>
+        <div class="secteur-item"><span class="s-icon">🏛️</span><p>Collectivités</p></div>
+        <div class="secteur-item"><span class="s-icon">🔧</span><p>Services</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSUS -->
+  <section class="section section--bg">
+    <div class="container">
+      <span class="section-label">Notre approche</span>
+      <h2 class="section-title text-center">Une méthode éprouvée en 4 étapes</h2>
+      <br/>
+      <div class="process-grid">
+        <div class="process-step"><div class="step-num">01</div><h4>Diagnostic</h4><p>Analyse de votre situation, identification des écarts et évaluation des risques.</p></div>
+        <div class="process-step"><div class="step-num">02</div><h4>Plan d'action</h4><p>Définition des priorités, ressources et calendrier réaliste.</p></div>
+        <div class="process-step"><div class="step-num">03</div><h4>Mise en œuvre</h4><p>Déploiement terrain avec accompagnement de nos experts.</p></div>
+        <div class="process-step"><div class="step-num">04</div><h4>Suivi</h4><p>Mesure des résultats, ajustements et ancrage dans la culture d'entreprise.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label">Témoignages</span>
+      <h2 class="section-title">Ce que disent nos clients</h2>
+      <div class="testi-grid">
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">« JML Consulting nous a accompagnés tout au long de notre démarche ISO 9001. Certification obtenue du premier coup ! »</p><div class="testi-author"><div class="testi-avatar">MR</div><div><div class="testi-name">Marc R.</div><div class="testi-role">Directeur Qualité — Industrie</div></div></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">« La formation sur la gestion des risques chimiques a été très appréciée. Contenu clair, formateur disponible, retour terrain immédiat. »</p><div class="testi-author"><div class="testi-avatar">SL</div><div><div class="testi-name">Sophie L.</div><div class="testi-role">Responsable HSE — BTP</div></div></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">« L'audit à blanc avant notre certification IFS a été d'une précision remarquable. Toutes les non-conformités ont été détectées. »</p><div class="testi-author"><div class="testi-avatar">AT</div><div><div class="testi-name">Amélie T.</div><div class="testi-role">Directrice site — Agroalimentaire</div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="section section--navy">
+    <div class="container text-center">
+      <span class="section-label">Restez informé</span>
+      <h2 class="section-title">Veille QHSE & ressources gratuites</h2>
+      <p class="section-sub">Recevez chaque mois nos articles, actualités réglementaires et ressources téléchargeables.</p>
+      <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+        <input type="email" placeholder="Votre adresse e-mail" required/>
+        <button type="submit" class="btn btn-accent">S'inscrire</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <div class="container text-center">
+      <h2>Prêt à engager votre démarche QHSE ?</h2>
+      <p>Nos experts vous accompagnent à chaque étape. Premier échange gratuit et sans engagement.</p>
+      <button class="btn btn-primary" onclick="showPage('contact')">Demander un rendez-vous →</button>
+    </div>
+  </div>
+
+</div><!-- /page-accueil -->
+
+<!-- ═══════════════════════════════════════
+     PAGE : CONSULTING
+═══════════════════════════════════════ -->
+<div class="page" id="page-consulting">
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="showPage('accueil')">Accueil</a> <span>/</span> Consulting</div>
+      <span class="section-label">Consulting QHSE</span>
+      <h1>Accompagnement stratégique sur-mesure</h1>
+      <p>Nous co-construisons avec vous des systèmes de management robustes et adaptés à votre culture d'entreprise.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <span class="section-label">Nos offres</span>
+      <h2 class="section-title">Nos prestations de consulting</h2>
+      <p class="section-sub">Chaque mission est unique. Nous adaptons notre approche à votre secteur, taille et objectifs.</p>
+      <div class="services-grid" style="grid-template-columns:repeat(2,1fr)">
+        <div class="service-card"><span class="service-icon">📋</span><h3>Système de Management Qualité</h3><p>Mise en place ou amélioration de votre SMQ selon ISO 9001:2015. Approche processus, orientation client, amélioration continue.</p><ul><li>Cartographie des processus</li><li>Manuel qualité & procédures</li><li>Plan d'actions priorisé</li><li>Accompagnement certification</li></ul></div>
+        <div class="service-card"><span class="service-icon">🌿</span><h3>Système de Management Environnemental</h3><p>Déploiement de votre SME selon ISO 14001:2015. Analyse environnementale, aspects et impacts, plan de réduction.</p><ul><li>Analyse environnementale initiale</li><li>Registre des aspects/impacts</li><li>Programme environnement</li><li>Veille réglementaire</li></ul></div>
+        <div class="service-card"><span class="service-icon">🦺</span><h3>Système de Management Sécurité</h3><p>Construction de votre SMSS selon ISO 45001:2018. Identification des dangers, évaluation des risques, culture sécurité.</p><ul><li>Document Unique (DUER)</li><li>Analyse accidents/presqu'accidents</li><li>Plan de prévention</li><li>Programme de formation sécurité</li></ul></div>
+        <div class="service-card"><span class="service-icon">🔗</span><h3>Système de Management Intégré</h3><p>Fusion de vos référentiels Qualité, Sécurité et Environnement dans un SMI cohérent et efficace.</p><ul><li>Système documentaire intégré</li><li>Revue de direction commune</li><li>Indicateurs unifiés</li><li>Audit interne intégré</li></ul></div>
+      </div>
+    </div>
+  </section>
+  <section class="section section--navy">
+    <div class="container">
+      <span class="section-label">Notre démarche</span>
+      <h2 class="section-title" style="color:var(--white);margin-bottom:3rem">Comment nous travaillons</h2>
+      <div class="process-grid" style="grid-template-columns:repeat(4,1fr)">
+        <div class="process-step"><div class="step-num">01</div><h4 style="color:var(--white)">Diagnostic</h4><p>Analyse de l'existant, identification des écarts.</p></div>
+        <div class="process-step"><div class="step-num">02</div><h4 style="color:var(--white)">Plan d'actions</h4><p>Feuille de route priorisée avec ressources et délais.</p></div>
+        <div class="process-step"><div class="step-num">03</div><h4 style="color:var(--white)">Déploiement</h4><p>Accompagnement opérationnel et formation des équipes.</p></div>
+        <div class="process-step"><div class="step-num">04</div><h4 style="color:var(--white)">Suivi</h4><p>Revue de direction, audits internes, amélioration continue.</p></div>
+      </div>
+    </div>
+  </section>
+  <div class="cta-band"><div class="container text-center"><h2>Parlons de votre projet</h2><p>Un premier échange de 30 minutes pour évaluer vos besoins — sans engagement.</p><button class="btn btn-primary" onclick="showPage('contact')">Prendre rendez-vous →</button></div></div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE : AUDIT
+═══════════════════════════════════════ -->
+<div class="page" id="page-audit">
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="showPage('accueil')">Accueil</a> <span>/</span> Audit</div>
+      <span class="section-label">Audit QHSE</span>
+      <h1>Des audits rigoureux pour votre conformité</h1>
+      <p>Évaluation objective de vos pratiques par des auditeurs certifiés IRCA et PECB.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="services-grid" style="grid-template-columns:repeat(2,1fr)">
+        <div class="service-card"><span class="service-icon">🔍</span><h3>Audit interne</h3><p>Évaluation de la conformité de votre SMQ/SME/SMSS aux exigences normatives et réglementaires.</p><ul><li>Rapport complet avec constats</li><li>Non-conformités classifiées</li><li>Opportunités d'amélioration</li></ul></div>
+        <div class="service-card"><span class="service-icon">🎯</span><h3>Audit à blanc</h3><p>Simulation complète d'un audit de certification pour évaluer votre préparation avant l'audit officiel.</p><ul><li>Simulation en conditions réelles</li><li>Identification des points critiques</li><li>Plan de correction priorisé</li></ul></div>
+        <div class="service-card"><span class="service-icon">🤝</span><h3>Audit fournisseur</h3><p>Évaluation de vos fournisseurs et sous-traitants selon vos exigences qualité, sécurité et environnement.</p><ul><li>Grille d'évaluation sur-mesure</li><li>Rapport de cotation</li><li>Plan d'actions partagé</li></ul></div>
+        <div class="service-card"><span class="service-icon">⚖️</span><h3>Audit réglementaire</h3><p>Vérification de la conformité aux obligations légales : Code du travail, ICPE, réglementation alimentaire.</p><ul><li>Revue des obligations légales</li><li>Registre des non-conformités</li><li>Veille réglementaire incluse</li></ul></div>
+      </div>
+    </div>
+  </section>
+  <section class="section section--navy">
+    <div class="container">
+      <span class="section-label">Référentiels maîtrisés</span>
+      <h2 class="section-title" style="color:var(--white);margin-bottom:2rem">Nos référentiels</h2>
+      <div class="ref-grid">
+        <div class="ref-badge"><strong>ISO 9001</strong><small>Qualité</small></div>
+        <div class="ref-badge"><strong>ISO 14001</strong><small>Environnement</small></div>
+        <div class="ref-badge"><strong>ISO 45001</strong><small>Sécurité SST</small></div>
+        <div class="ref-badge"><strong>HACCP</strong><small>Alimentaire</small></div>
+        <div class="ref-badge"><strong>IFS Food</strong><small>Agroalimentaire</small></div>
+        <div class="ref-badge"><strong>BRC</strong><small>Global Standards</small></div>
+        <div class="ref-badge"><strong>ISO 50001</strong><small>Énergie</small></div>
+        <div class="ref-badge"><strong>ISO 22000</strong><small>Sécurité alim.</small></div>
+      </div>
+    </div>
+  </section>
+  <div class="cta-band"><div class="container text-center"><h2>Besoin d'un audit ?</h2><p>Réponse sous 48h avec une offre adaptée à votre contexte.</p><button class="btn btn-primary" onclick="showPage('contact')">Demander un audit →</button></div></div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE : FORMATIONS
+═══════════════════════════════════════ -->
+<div class="page" id="page-formations">
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="showPage('accueil')">Accueil</a> <span>/</span> Formations</div>
+      <span class="section-label">Catalogue formations</span>
+      <h1>Formations QHSE professionnelles</h1>
+      <p>Présentiel, distanciel ou mixte — programmes adaptés à tous les niveaux et secteurs d'activité.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <!-- FILTRES -->
+      <div class="filters-bar">
+        <div class="filters-bar-title">🔽 Filtrer les formations</div>
+        <div class="filters-row">
+          <div class="filter-group">
+            <label>Thématique</label>
+            <select id="f-thematique" onchange="applyFormationFilters()">
+              <option value="">Toutes</option>
+              <option value="qualite">Qualité (ISO 9001)</option>
+              <option value="securite">Sécurité (ISO 45001)</option>
+              <option value="environnement">Environnement (ISO 14001)</option>
+              <option value="alimentaire">Hygiène alimentaire</option>
+              <option value="audit">Audit interne</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Format</label>
+            <select id="f-format" onchange="applyFormationFilters()">
+              <option value="">Tous</option>
+              <option value="presentiel">Présentiel</option>
+              <option value="distanciel">Distanciel</option>
+              <option value="mixte">Mixte</option>
+              <option value="intra">Intra-entreprise</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Durée</label>
+            <select id="f-duree" onchange="applyFormationFilters()">
+              <option value="">Toutes</option>
+              <option value="1">1 jour</option>
+              <option value="2">2 jours</option>
+              <option value="3">3 jours et +</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Financement</label>
+            <select id="f-financement" onchange="applyFormationFilters()">
+              <option value="">Tous</option>
+              <option value="cpf">CPF</option>
+              <option value="opco">OPCO</option>
+              <option value="plan">Plan de formation</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Niveau</label>
+            <select id="f-niveau" onchange="applyFormationFilters()">
+              <option value="">Tous</option>
+              <option value="initiation">Initiation</option>
+              <option value="perfectionnement">Perfectionnement</option>
+              <option value="expert">Expert</option>
+            </select>
+          </div>
+          <div class="filters-actions">
+            <button class="btn btn-primary btn-sm" onclick="applyFormationFilters()">Appliquer</button>
+            <button class="btn btn-ghost btn-sm" onclick="resetFormationFilters()">Réinitialiser</button>
+            <span class="filters-count" id="formationCount">7 formations trouvées</span>
+          </div>
+        </div>
+      </div>
+      <!-- GRILLE FORMATIONS -->
+      <div class="formation-grid" id="formationGrid">
+        <div class="formation-card" data-cat="qualite" data-format="presentiel" data-duree="2" data-fin="cpf" data-niveau="initiation">
+          <div class="formation-head"><span class="formation-tag">Qualité</span><div class="formation-duration">2j <small>/ 14h</small></div></div>
+          <div class="formation-body"><h3>Sensibilisation ISO 9001:2015</h3><p>Comprendre les exigences de la norme et les principes du management de la qualité.</p><div class="formation-meta"><span class="meta-tag">👤 Tout public</span><span class="meta-tag">📍 Présentiel</span><span class="meta-tag">📊 Initiation</span></div></div>
+          <div class="formation-footer"><span class="formation-price">490€ <small>HT/pers.</small></span><button class="btn btn-primary btn-sm" onclick="addToCart('Formation ISO 9001 Sensibilisation','Formation',490)">S'inscrire</button></div>
+        </div>
+        <div class="formation-card" data-cat="qualite" data-format="mixte" data-duree="3" data-fin="opco" data-niveau="perfectionnement">
+          <div class="formation-head"><span class="formation-tag">Qualité</span><div class="formation-duration">3j <small>/ 21h</small></div></div>
+          <div class="formation-body"><h3>Responsable Qualité — ISO 9001</h3><p>Former le pilote qualité à construire et déployer un SMQ conforme à ISO 9001:2015.</p><div class="formation-meta"><span class="meta-tag">👤 Responsables qualité</span><span class="meta-tag">📍 Mixte</span><span class="meta-tag">📊 Perfectionnement</span></div></div>
+          <div class="formation-footer"><span class="formation-price">890€ <small>HT/pers.</small></span><button class="btn btn-primary btn-sm" onclick="addToCart('Responsable Qualité ISO 9001','Formation',890)">S'inscrire</button></div>
+        </div>
+        <div class="formation-card" data-cat="securite" data-format="presentiel" data-duree="1" data-fin="plan" data-niveau="initiation">
+          <div class="formation-head"><span class="formation-tag">Sécurité</span><div class="formation-duration">1j <small>/ 7h</small></div></div>
+          <div class="formation-body"><h3>Sensibilisation risques professionnels</h3><p>Identifier et prévenir les principaux risques en milieu professionnel.</p><div class="formation-meta"><span class="meta-tag">👤 Opérateurs</span><span class="meta-tag">📍 Présentiel</span><span class="meta-tag">📊 Initiation</span></div></div>
+          <div class="formation-footer"><span class="formation-price">290€ <small>HT/pers.</small></span><button class="btn btn-primary btn-sm" onclick="addToCart('Sensibilisation Risques Professionnels','Formation',290)">S'inscrire</button></div>
+        </div>
+        <div class="formation-card" data-cat="securite" data-format="mixte" data-duree="3" data-fin="cpf" data-niveau="perfectionnement">
+          <div class="formation-head"><span class="formation-tag">Sécurité</span><div class="formation-duration">3j <small>/ 21h</small></div></div>
+          <div class="formation-body"><h3>ISO 45001 — Management SST</h3><p>Maîtriser les exigences de la norme ISO 45001 et développer votre SMSS.</p><div class="formation-meta"><span class="meta-tag">👤 Responsables HSE</span><span class="meta-tag">📍 Mixte</span><span class="meta-tag">📊 Perfectionnement</span></div></div>
+          <div class="formation-footer"><span class="formation-price">790€ <small>HT/pers.</small></span><button class="btn btn-primary btn-sm" onclick="addToCart('ISO 45001 Management SST','Formation',790)">S'inscrire</button></div>
+        </div>
+        <div class="formation-card" data-cat="environnement" data-format="presentiel" data-duree="2" data-fin="opco" data-niveau="perfectionnement">
+          <div class="formation-head"><span class="formation-tag">Environnement</span><div class="formation-duration">2j <small>/ 14h</small></div></div>
+          <div class="formation-body"><h3>ISO 14001 — Management Environnemental</h3><p>Comprendre et mettre en application les exigences de la norme ISO 14001:2015.</p><div class="formation-meta"><span class="meta-tag">👤 Responsables HSE/QE</span><span class="meta-tag">📍 Présentiel</span><span class="meta-tag">📊 Perfectionnement</span></div></div>
+          <div class="formation-footer"><span class="formation-price">590€ <small>HT/pers.</small></span><button class="btn btn-primary btn-sm" onclick="addToCart('ISO 14001 Management Environnemental','Formation',590)">S'inscrire</button></div>
+        </div>
+        <div class="formation-card" data-cat="alimentaire" data-format="presentiel" data-duree="2" data-fin="plan" data-niveau="initiation">
+          <div class="formation-head"><span class="formation-tag">Alimentaire</span><div class="formation-duration">2j <small>/ 14h</small></div></div>
+          <div class="formation-body"><h3>Hygiène Alimentaire (HACCP)</h3><p>Formation réglementaire pour la restauration commerciale et l'industrie alimentaire.</p><div class="formation-meta"><span class="meta-tag">👤 Restauration / IAA</span><span class="meta-tag">📍 Présentiel</span><span class="meta-tag">📊 Initiation</span></div></div>
+          <div class="formation-footer"><span class="formation-price">390€ <small>HT/pers.</small></span><button class="btn btn-primary btn-sm" onclick="addToCart('Hygiène Alimentaire HACCP','Formation',390)">S'inscrire</button></div>
+        </div>
+        <div class="formation-card" data-cat="audit" data-format="presentiel" data-duree="3" data-fin="cpf" data-niveau="expert">
+          <div class="formation-head"><span class="formation-tag">Audit</span><div class="formation-duration">3j <small>/ 21h</small></div></div>
+          <div class="formation-body"><h3>Auditeur interne QHSE (ISO 19011)</h3><p>Former vos auditeurs internes à la conduite d'audits. Mises en situation intensives.</p><div class="formation-meta"><span class="meta-tag">👤 Auditeurs internes</span><span class="meta-tag">📍 Présentiel</span><span class="meta-tag">📊 Expert</span></div></div>
+          <div class="formation-footer"><span class="formation-price">890€ <small>HT/pers.</small></span><button class="btn btn-primary btn-sm" onclick="addToCart('Auditeur Interne QHSE','Formation',890)">S'inscrire</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE : BOUTIQUE
+═══════════════════════════════════════ -->
+<div class="page" id="page-boutique">
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="showPage('accueil')">Accueil</a> <span>/</span> Boutique</div>
+      <span class="section-label">Boutique QHSE</span>
+      <h1>Documents, guides & outils QHSE</h1>
+      <p>Téléchargement immédiat — formats PDF et Word prêts à l'emploi.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <!-- FILTRES BOUTIQUE -->
+      <div class="filters-bar">
+        <div class="filters-bar-title">🔽 Filtrer les produits</div>
+        <div class="filters-row">
+          <div class="filter-group">
+            <label>Catégorie</label>
+            <select id="b-categorie" onchange="applyBoutiqueFilters()">
+              <option value="">Toutes</option>
+              <option value="guide">Guides & check-lists</option>
+              <option value="modele">Modèles de documents</option>
+              <option value="kit">Kits de démarrage</option>
+              <option value="abonnement">Abonnements</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Thématique</label>
+            <select id="b-thematique" onchange="applyBoutiqueFilters()">
+              <option value="">Toutes</option>
+              <option value="qualite">Qualité</option>
+              <option value="securite">Sécurité</option>
+              <option value="environnement">Environnement</option>
+              <option value="alimentaire">Alimentaire</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Format</label>
+            <select id="b-format" onchange="applyBoutiqueFilters()">
+              <option value="">Tous</option>
+              <option value="pdf">PDF</option>
+              <option value="word">Word</option>
+              <option value="pack">Pack multi-fichiers</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Prix</label>
+            <select id="b-prix" onchange="applyBoutiqueFilters()">
+              <option value="">Tous</option>
+              <option value="low">Moins de 50€</option>
+              <option value="mid">50€ – 100€</option>
+              <option value="high">Plus de 100€</option>
+            </select>
+          </div>
+          <div class="filters-actions">
+            <button class="btn btn-primary btn-sm" onclick="applyBoutiqueFilters()">Appliquer</button>
+            <button class="btn btn-ghost btn-sm" onclick="resetBoutiqueFilters()">Réinitialiser</button>
+            <span class="filters-count" id="boutiqueCount">7 produits</span>
+          </div>
+        </div>
+      </div>
+      <!-- PRODUITS -->
+      <div class="product-grid" id="productGrid">
+        <div class="product-card" data-cat="guide" data-theme="qualite" data-format="pdf" data-prix="low">
+          <div class="product-img">📋<span class="product-format-badge">PDF</span></div>
+          <div class="product-body"><div class="product-cat">Guide · Qualité</div><h3>Guide de mise en place ISO 9001:2015</h3><p>70 pages — Comprendre, structurer et déployer votre SMQ étape par étape.</p></div>
+          <div class="product-footer"><span class="product-price">29€ <small>HT</small></span><button class="btn btn-primary btn-sm" onclick="addToCart('Guide ISO 9001:2015','PDF',29)">Ajouter au panier</button></div>
+        </div>
+        <div class="product-card" data-cat="modele" data-theme="qualite" data-format="word" data-prix="mid">
+          <div class="product-img">📄<span class="product-format-badge">Word</span></div>
+          <div class="product-body"><div class="product-cat">Modèle · Qualité</div><h3>Modèle Manuel Qualité ISO 9001</h3><p>Document Word entièrement personnalisable — structure complète prête à l'emploi.</p></div>
+          <div class="product-footer"><span class="product-price">49€ <small>HT</small></span><button class="btn btn-primary btn-sm" onclick="addToCart('Modèle Manuel Qualité','Word',49)">Ajouter au panier</button></div>
+        </div>
+        <div class="product-card" data-cat="kit" data-theme="securite" data-format="pack" data-prix="mid">
+          <div class="product-img">📦<span class="product-format-badge">Pack</span></div>
+          <div class="product-body"><div class="product-cat">Kit · Sécurité</div><h3>Pack DUER complet (Document Unique)</h3><p>Word + Excel — Modèle DUER, grille d'évaluation et plan d'actions correctives.</p></div>
+          <div class="product-footer"><span class="product-price">59€ <small>HT</small></span><button class="btn btn-primary btn-sm" onclick="addToCart('Pack DUER Complet','Pack',59)">Ajouter au panier</button></div>
+        </div>
+        <div class="product-card" data-cat="kit" data-theme="qualite" data-format="pack" data-prix="mid">
+          <div class="product-img">🔍<span class="product-format-badge">Pack</span></div>
+          <div class="product-body"><div class="product-cat">Kit · Audit</div><h3>Kit Auditeur Interne QHSE</h3><p>PDF + Fiches — Plan d'audit, check-lists, rapport type et grille de cotation.</p></div>
+          <div class="product-footer"><span class="product-price">79€ <small>HT</small></span><button class="btn btn-primary btn-sm" onclick="addToCart('Kit Auditeur Interne QHSE','Pack',79)">Ajouter au panier</button></div>
+        </div>
+        <div class="product-card" data-cat="guide" data-theme="environnement" data-format="pdf" data-prix="low">
+          <div class="product-img">🌿<span class="product-format-badge">PDF</span></div>
+          <div class="product-body"><div class="product-cat">Guide · Environnement</div><h3>Check-list Audit ISO 14001:2015</h3><p>40 pages — Toutes les questions d'audit classées par chapitre de la norme.</p></div>
+          <div class="product-footer"><span class="product-price">19€ <small>HT</small></span><button class="btn btn-primary btn-sm" onclick="addToCart('Check-list Audit ISO 14001','PDF',19)">Ajouter au panier</button></div>
+        </div>
+        <div class="product-card" data-cat="abonnement" data-theme="qualite" data-format="pdf" data-prix="low">
+          <div class="product-img">📰<span class="product-format-badge">Mensuel</span></div>
+          <div class="product-body"><div class="product-cat">Abonnement · Veille</div><h3>Veille Réglementaire QHSE</h3><p>Mensuel — Actualités réglementaires, nouvelles normes, alertes sectorielles.</p></div>
+          <div class="product-footer"><span class="product-price">29€ <small>HT/mois</small></span><button class="btn btn-primary btn-sm" onclick="addToCart('Veille Réglementaire QHSE','Abonnement',29)">S'abonner</button></div>
+        </div>
+        <div class="product-card" data-cat="kit" data-theme="qualite" data-format="pack" data-prix="high">
+          <div class="product-img">🚀<span class="product-format-badge">Pack</span></div>
+          <div class="product-body"><div class="product-cat">Kit · Qualité</div><h3>Pack Démarrage ISO 9001 Complet</h3><p>Guide + Manuel + Procédures + Modèles + Check-lists — Tout pour démarrer.</p></div>
+          <div class="product-footer"><span class="product-price">149€ <small>HT</small></span><button class="btn btn-accent btn-sm" onclick="addToCart('Pack Démarrage ISO 9001 Complet','Pack',149)">Ajouter au panier</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE : PANIER
+═══════════════════════════════════════ -->
+<div class="page" id="page-panier">
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="showPage('accueil')">Accueil</a> <span>/</span> Panier</div>
+      <h1>Mon panier</h1>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container cart-section">
+      <div id="cartEmpty" class="cart-empty" style="display:none">
+        <div class="cart-empty-icon">🛒</div>
+        <h3>Votre panier est vide</h3>
+        <p style="margin-bottom:1.5rem">Explorez nos formations et documents QHSE.</p>
+        <button class="btn btn-primary" onclick="showPage('boutique')">Voir la boutique</button>
+      </div>
+      <div id="cartContent">
+        <table class="cart-table" id="cartTable">
+          <thead><tr><th>Produit</th><th>Type</th><th>Qté</th><th>Prix unitaire</th><th>Total</th><th></th></tr></thead>
+          <tbody id="cartBody"></tbody>
+        </table>
+        <div style="display:flex;gap:2rem;align-items:flex-start;flex-wrap:wrap">
+          <div style="flex:1">
+            <button class="btn btn-ghost" onclick="showPage('boutique')" style="margin-bottom:1rem">← Continuer mes achats</button>
+          </div>
+          <div class="cart-summary" id="cartSummary">
+            <h3 style="margin-bottom:1.5rem">Récapitulatif</h3>
+            <div class="cart-summary-row"><span>Sous-total HT</span><span id="cartSubtotal">0,00€</span></div>
+            <div class="cart-summary-row"><span>TVA (20%)</span><span id="cartTVA">0,00€</span></div>
+            <div class="cart-summary-row total"><span>Total TTC</span><span id="cartTotal">0,00€</span></div>
+            <div class="cart-promo"><input type="text" id="promoInput" placeholder="Code promo"/><button class="btn btn-outline btn-sm" onclick="applyPromo()">Appliquer</button></div>
+            <div id="promoMsg" style="font-size:0.82rem;color:var(--success);margin-bottom:0.8rem;display:none">✓ Code appliqué — -10%</div>
+            <button class="btn btn-accent btn-full" onclick="checkout()">Passer la commande →</button>
+            <p style="font-size:0.75rem;text-align:center;margin-top:0.8rem;color:var(--gray-400)">🔒 Paiement sécurisé · Téléchargement immédiat</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE : CONNEXION
+═══════════════════════════════════════ -->
+<div class="page" id="page-connexion">
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="showPage('accueil')">Accueil</a> <span>/</span> Mon compte</div>
+      <h1>Mon espace personnel</h1>
+      <p>Connectez-vous pour accéder à vos formations, documents et commandes.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="auth-grid">
+        <div class="auth-panel">
+          <h3>Se connecter</h3>
+          <p>Accédez à votre espace personnel JML Consulting.</p>
+          <div class="form-group"><label>Adresse e-mail</label><input type="email" id="loginEmail" placeholder="votre@email.com"/></div>
+          <div class="form-group"><label>Mot de passe</label><input type="password" id="loginPwd" placeholder="••••••••"/></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+            <label class="form-check"><input type="checkbox"/> Rester connecté</label>
+            <span class="form-link">Mot de passe oublié ?</span>
+          </div>
+          <button class="btn btn-primary btn-full" onclick="login()">Se connecter →</button>
+          <div id="loginError" style="color:var(--danger);font-size:0.82rem;margin-top:0.8rem;display:none">Email ou mot de passe incorrect.</div>
+        </div>
+        <div class="auth-panel" style="background:var(--off-white)">
+          <h3>Créer un compte</h3>
+          <p>Rejoignez l'espace client JML Consulting & Services.</p>
+          <div class="auth-benefits">
+            <h5>Avantages du compte</h5>
+            <ul>
+              <li>Suivre vos commandes en temps réel</li>
+              <li>Télécharger vos documents achetés</li>
+              <li>Gérer vos inscriptions aux formations</li>
+              <li>Accéder à vos attestations de présence</li>
+              <li>Recevoir nos offres exclusives</li>
+            </ul>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group"><label>Prénom *</label><input type="text" id="regPrenom" placeholder="Jean"/></div>
+            <div class="form-group"><label>Nom *</label><input type="text" id="regNom" placeholder="Martin"/></div>
+          </div>
+          <div class="form-group"><label>Société</label><input type="text" id="regSociete" placeholder="Votre entreprise"/></div>
+          <div class="form-group"><label>E-mail *</label><input type="email" id="regEmail" placeholder="votre@email.com"/></div>
+          <div class="form-group"><label>Mot de passe *</label><input type="password" id="regPwd" placeholder="Minimum 8 caractères"/></div>
+          <label class="form-check" style="margin-bottom:1.2rem"><input type="checkbox" id="regCgu" required/> J'accepte les conditions générales de vente et la politique de confidentialité *</label>
+          <button class="btn btn-accent btn-full" onclick="register()">Créer mon compte →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE : MON COMPTE
+═══════════════════════════════════════ -->
+<div class="page" id="page-mon-compte">
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="showPage('accueil')">Accueil</a> <span>/</span> Mon compte</div>
+      <h1 id="welcomeMsg">Bonjour !</h1>
+      <p>Bienvenue dans votre espace personnel JML Consulting & Services.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="compte-layout">
+        <!-- SIDEBAR -->
+        <div class="compte-sidebar">
+          <div class="compte-sidebar-header">
+            <div class="compte-avatar" id="compteAvatar">JM</div>
+            <div class="compte-sidebar-name" id="compteName">Jean Martin</div>
+            <div class="compte-sidebar-email" id="compteEmail">j.martin@email.fr</div>
+          </div>
+          <div class="compte-nav">
+            <div class="compte-nav-item active" onclick="showCompteSection('dashboard')"><span>🏠</span> Tableau de bord</div>
+            <div class="compte-nav-item" onclick="showCompteSection('commandes')"><span>📦</span> Mes commandes</div>
+            <div class="compte-nav-item" onclick="showCompteSection('formations')"><span>🎓</span> Mes formations</div>
+            <div class="compte-nav-item" onclick="showCompteSection('documents')"><span>📄</span> Mes documents</div>
+            <div class="compte-nav-item" onclick="showCompteSection('profil')"><span>👤</span> Mon profil</div>
+            <hr class="divider" style="margin:0.5rem 0"/>
+            <div class="compte-nav-item" onclick="logout()" style="color:var(--danger)"><span>🔓</span> Déconnexion</div>
+          </div>
+        </div>
+        <!-- MAIN CONTENT -->
+        <div class="compte-main" id="compteMain">
+          <!-- DASHBOARD -->
+          <div id="section-dashboard">
+            <div class="compte-card">
+              <div class="compte-card-header"><h3>Tableau de bord</h3></div>
+              <div class="resume-grid">
+                <div class="resume-item"><div class="resume-num" id="dashCommandes">0</div><div class="resume-label">Commandes</div></div>
+                <div class="resume-item"><div class="resume-num">2</div><div class="resume-label">Formations</div></div>
+                <div class="resume-item"><div class="resume-num">4</div><div class="resume-label">Documents</div></div>
+              </div>
+            </div>
+            <div class="compte-card">
+              <div class="compte-card-header"><h3>Formation à venir</h3></div>
+              <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--accent-light);border-radius:var(--radius);border-left:3px solid var(--accent)">
+                <span style="font-size:2rem">🎓</span>
+                <div><strong style="display:block;font-size:0.95rem">Auditeur Interne QHSE</strong><span style="font-size:0.82rem;color:var(--gray-400)">15–17 Juin 2025 · Présentiel · Paris</span></div>
+                <button class="btn btn-outline btn-sm" style="margin-left:auto">Détails</button>
+              </div>
+            </div>
+          </div>
+          <!-- COMMANDES -->
+          <div id="section-commandes" style="display:none">
+            <div class="compte-card">
+              <div class="compte-card-header"><h3>Mes commandes</h3></div>
+              <div id="commandesList"></div>
+            </div>
+          </div>
+          <!-- FORMATIONS -->
+          <div id="section-formations" style="display:none">
+            <div class="compte-card">
+              <div class="compte-card-header"><h3>Mes formations</h3></div>
+              <div class="docs-list">
+                <div class="doc-item"><span class="doc-icon">🎓</span><div><div class="doc-name">Auditeur Interne QHSE</div><div class="doc-date">15–17 Juin 2025 · À venir</div></div><button class="btn btn-outline btn-sm" style="margin-left:auto">Supports</button></div>
+                <div class="doc-item"><span class="doc-icon">✅</span><div><div class="doc-name">Sensibilisation ISO 9001</div><div class="doc-date">Terminée le 10 Mars 2025</div></div><button class="btn btn-outline btn-sm" style="margin-left:auto">Attestation</button></div>
+              </div>
+            </div>
+          </div>
+          <!-- DOCUMENTS -->
+          <div id="section-documents" style="display:none">
+            <div class="compte-card">
+              <div class="compte-card-header"><h3>Mes documents</h3><button class="btn btn-outline btn-sm" onclick="showPage('boutique')">+ Acheter</button></div>
+              <div class="docs-list">
+                <div class="doc-item"><span class="doc-icon">📋</span><div><div class="doc-name">Guide ISO 9001:2015</div><div class="doc-date">Acheté le 5 Avril 2025 · PDF</div></div><span class="doc-download" onclick="alert('Téléchargement simulé')">⬇ Télécharger</span></div>
+                <div class="doc-item"><span class="doc-icon">📄</span><div><div class="doc-name">Modèle Manuel Qualité</div><div class="doc-date">Acheté le 5 Avril 2025 · Word</div></div><span class="doc-download" onclick="alert('Téléchargement simulé')">⬇ Télécharger</span></div>
+                <div class="doc-item"><span class="doc-icon">🏅</span><div><div class="doc-name">Attestation — Sensibilisation ISO 9001</div><div class="doc-date">Émise le 12 Mars 2025 · PDF</div></div><span class="doc-download" onclick="alert('Téléchargement simulé')">⬇ Télécharger</span></div>
+                <div class="doc-item"><span class="doc-icon">🧾</span><div><div class="doc-name">Facture JML-2025-0042</div><div class="doc-date">5 Avril 2025 · PDF</div></div><span class="doc-download" onclick="alert('Téléchargement simulé')">⬇ Télécharger</span></div>
+              </div>
+            </div>
+          </div>
+          <!-- PROFIL -->
+          <div id="section-profil" style="display:none">
+            <div class="compte-card">
+              <div class="compte-card-header"><h3>Mon profil</h3></div>
+              <div class="form-grid-2">
+                <div class="form-group"><label>Prénom</label><input type="text" id="profPrenom" value="Jean"/></div>
+                <div class="form-group"><label>Nom</label><input type="text" id="profNom" value="Martin"/></div>
+              </div>
+              <div class="form-group"><label>Société</label><input type="text" value="Acme Industries"/></div>
+              <div class="form-group"><label>Fonction</label><input type="text" value="Responsable QHSE"/></div>
+              <div class="form-group"><label>E-mail</label><input type="email" id="profEmail" value="j.martin@email.fr"/></div>
+              <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="+33 6 00 00 00 00"/></div>
+              <hr class="divider"/>
+              <h4 style="font-size:1rem;margin-bottom:1rem">Changer de mot de passe</h4>
+              <div class="form-group"><label>Mot de passe actuel</label><input type="password" placeholder="••••••••"/></div>
+              <div class="form-grid-2">
+                <div class="form-group"><label>Nouveau</label><input type="password" placeholder="••••••••"/></div>
+                <div class="form-group"><label>Confirmer</label><input type="password" placeholder="••••••••"/></div>
+              </div>
+              <button class="btn btn-primary" onclick="saveProfil()">Enregistrer les modifications</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE : BLOG
+═══════════════════════════════════════ -->
+<div class="page" id="page-blog">
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="showPage('accueil')">Accueil</a> <span>/</span> Ressources</div>
+      <span class="section-label">Blog & Ressources</span>
+      <h1>Actualités & expertise QHSE</h1>
+      <p>Articles, guides et retours d'expérience pour rester à la pointe des pratiques QHSE.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="filters-bar">
+        <div class="filters-row">
+          <div class="filter-group">
+            <label>Catégorie</label>
+            <select>
+              <option>Toutes</option><option>Qualité</option><option>Sécurité</option><option>Environnement</option><option>Réglementation</option><option>Retours d'expérience</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Année</label>
+            <select><option>Toutes</option><option>2025</option><option>2024</option><option>2023</option></select>
+          </div>
+          <div class="filters-actions"><button class="btn btn-primary btn-sm">Filtrer</button></div>
+        </div>
+      </div>
+      <div class="article-grid">
+        <div class="article-card"><div class="article-img">📊</div><div class="article-body"><div class="article-cat">Qualité</div><h3>ISO 9001:2015 : les 10 erreurs les plus fréquentes lors d'un audit de certification</h3><p>Préparez-vous à éviter les pièges classiques qui font échouer les audits de certification ISO 9001.</p><div class="article-meta"><span>12 Avr. 2025</span><a class="article-link" href="#">Lire →</a></div></div></div>
+        <div class="article-card"><div class="article-img">⚖️</div><div class="article-body"><div class="article-cat">Réglementation</div><h3>Veille réglementaire HSE : ce qui change au 1er janvier 2025</h3><p>Tour d'horizon des nouvelles obligations réglementaires en matière de santé, sécurité et environnement.</p><div class="article-meta"><span>3 Jan. 2025</span><a class="article-link" href="#">Lire →</a></div></div></div>
+        <div class="article-card"><div class="article-img">🌿</div><div class="article-body"><div class="article-cat">Environnement</div><h3>Comment construire votre analyse environnementale ISO 14001 efficacement</h3><p>Méthode pas-à-pas pour identifier vos aspects environnementaux significatifs et prioriser vos actions.</p><div class="article-meta"><span>18 Fév. 2025</span><a class="article-link" href="#">Lire →</a></div></div></div>
+      </div>
+      <div style="margin-top:3rem;background:var(--navy);border-radius:var(--radius-lg);padding:2.5rem;text-align:center">
+        <h3 style="color:var(--white);margin-bottom:0.5rem">📥 Ressources gratuites</h3>
+        <p style="color:rgba(255,255,255,0.55);margin-bottom:1.5rem">Téléchargez nos check-lists, fiches réflexes et guides pratiques — sans engagement.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <button class="btn btn-accent" onclick="alert('Téléchargement simulé')">Check-list Audit ISO 9001</button>
+          <button class="btn btn-outline-white" onclick="alert('Téléchargement simulé')">Guide DUER — Démarrer</button>
+          <button class="btn btn-outline-white" onclick="alert('Téléchargement simulé')">Fiche HACCP Opérateurs</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE : À PROPOS
+═══════════════════════════════════════ -->
+<div class="page" id="page-a-propos">
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="showPage('accueil')">Accueil</a> <span>/</span> À propos</div>
+      <span class="section-label">Le cabinet</span>
+      <h1>Un cabinet indépendant au service de l'excellence</h1>
+      <p>JML Consulting & Services, fondé sur l'expertise terrain et l'engagement envers ses clients depuis 2009.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
+        <div><span class="section-label">Notre histoire</span><h2 class="section-title">15 ans d'expertise QHSE</h2><p style="margin-bottom:1rem">JML Consulting & Services est né de la conviction que la qualité, la sécurité et l'environnement ne sont pas des contraintes, mais de véritables leviers de performance.</p><p style="margin-bottom:1rem">Depuis notre création en 2009, nous avons accompagné plus de 200 entreprises dans leurs démarches QHSE, avec une approche toujours pragmatique et orientée résultats.</p><div class="highlight-box" style="margin-top:1.5rem"><h5>🏅 Cabinet expert QHSE depuis 2009</h5><p>Auditeurs certifiés IRCA et PECB, intervenant dans toute la France.</p></div></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div style="background:var(--navy);border-radius:var(--radius-lg);padding:2rem;text-align:center"><div style="font-family:'IBM Plex Serif',serif;font-size:2.8rem;font-weight:700;color:var(--accent)">2009</div><div style="font-size:0.82rem;color:rgba(255,255,255,0.45);margin-top:0.3rem">Création du cabinet</div></div>
+          <div style="background:var(--off-white);border-radius:var(--radius-lg);padding:2rem;text-align:center"><div style="font-family:'IBM Plex Serif',serif;font-size:2.8rem;font-weight:700;color:var(--navy)">+200</div><div style="font-size:0.82rem;color:var(--gray-400);margin-top:0.3rem">Clients accompagnés</div></div>
+          <div style="background:var(--off-white);border-radius:var(--radius-lg);padding:2rem;text-align:center"><div style="font-family:'IBM Plex Serif',serif;font-size:2.8rem;font-weight:700;color:var(--navy)">8+</div><div style="font-size:0.82rem;color:var(--gray-400);margin-top:0.3rem">Secteurs d'activité</div></div>
+          <div style="background:var(--navy);border-radius:var(--radius-lg);padding:2rem;text-align:center"><div style="font-family:'IBM Plex Serif',serif;font-size:2.8rem;font-weight:700;color:var(--accent)">98%</div><div style="font-size:0.82rem;color:rgba(255,255,255,0.45);margin-top:0.3rem">Satisfaction client</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section--bg">
+    <div class="container">
+      <span class="section-label">Notre équipe</span>
+      <h2 class="section-title">Des experts certifiés</h2>
+      <p class="section-sub">Une équipe pluridisciplinaire, certifiée et passionnée par l'excellence QHSE.</p>
+      <div class="team-grid">
+        <div class="team-card">
+          <!-- Cloudinary : remplacez la div.team-photo par <img src="https://res.cloudinary.com/VOTRE_CLOUD/image/upload/..."> -->
+          <div class="team-photo">JL</div>
+          <div class="team-body"><div class="team-name">Jean-Marc L.</div><div class="team-role">Fondateur & Consultant Senior</div><p class="team-bio">15 ans d'expérience en SMI. Ancien responsable QHSE groupe industrie. Auditeur certifié IRCA.</p><div class="team-certs"><span class="team-cert">Auditeur IRCA ISO 9001</span><span class="team-cert">Lead Auditor ISO 45001</span><span class="team-cert">PECB ISO 14001</span></div></div>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">ML</div>
+          <div class="team-body"><div class="team-name">Marie L.</div><div class="team-role">Consultante & Formatrice</div><p class="team-bio">Spécialiste sécurité des aliments. 10 ans d'expérience en agroalimentaire et grande distribution.</p><div class="team-certs"><span class="team-cert">HACCP</span><span class="team-cert">Auditrice IFS Food</span><span class="team-cert">ISO 22000</span></div></div>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">AS</div>
+          <div class="team-body"><div class="team-name">Antoine S.</div><div class="team-role">Consultant HSE & Formateur</div><p class="team-bio">Expert prévention des risques professionnels. 8 ans dans le BTP et l'industrie. Ingénieur HSE.</p><div class="team-certs"><span class="team-cert">Ingénieur HSE</span><span class="team-cert">Lead Auditor ISO 45001</span><span class="team-cert">IOSH</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="cta-band"><div class="container text-center"><h2>Travaillons ensemble</h2><p>Prenez contact pour un premier échange sur votre projet QHSE.</p><button class="btn btn-primary" onclick="showPage('contact')">Prendre contact →</button></div></div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE : CONTACT
+═══════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="showPage('accueil')">Accueil</a> <span>/</span> Contact</div>
+      <span class="section-label">Contact</span>
+      <h1>Parlons de votre projet</h1>
+      <p>Réponse sous 24h ouvrées. Premier échange toujours gratuit et sans engagement.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+        <div>
+          <span class="section-label">Coordonnées</span>
+          <h2 class="section-title">Entrons en contact</h2>
+          <p style="margin-bottom:2rem">Un premier échange de 30 minutes suffit souvent pour clarifier vos besoins.</p>
+          <div class="contact-info-item"><div class="contact-ico">📞</div><div><div class="contact-label">Téléphone</div><div class="contact-val"><a href="tel:+33784767930" style="color:var(--text)">+33 7 84 76 79 30</a></div></div></div>
+          <div class="contact-info-item"><div class="contact-ico">✉️</div><div><div class="contact-label">E-mail</div><div class="contact-val"><span id="contactEmail"></span></div></div></div>
+          <div class="contact-info-item"><div class="contact-ico">📍</div><div><div class="contact-label">Interventions</div><div class="contact-val">France entière (déplacements)</div></div></div>
+          <div class="contact-info-item"><div class="contact-ico">⏰</div><div><div class="contact-label">Disponibilité</div><div class="contact-val">Lun – Ven · 9h – 18h</div></div></div>
+        </div>
+        <div class="contact-form-wrap">
+          <h3 style="margin-bottom:0.5rem">Envoyez-nous un message</h3>
+          <p style="font-size:0.88rem;margin-bottom:1.5rem">Les champs marqués * sont obligatoires.</p>
+          <!--
+            ⚠️ FORMSPREE : Remplacez YOUR_FORM_ID par votre identifiant
+            Créez votre formulaire sur https://formspree.io
+          -->
+          <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="handleContact(event)">
+            <div class="form-grid-2">
+              <div class="form-group"><label>Prénom *</label><input type="text" name="prenom" placeholder="Jean" required/></div>
+              <div class="form-group"><label>Nom *</label><input type="text" name="nom" placeholder="Martin" required/></div>
+              <div class="form-group"><label>Société *</label><input type="text" name="societe" placeholder="Votre entreprise" required/></div>
+              <div class="form-group"><label>Fonction</label><input type="text" name="fonction" placeholder="Responsable QHSE"/></div>
+              <div class="form-group"><label>E-mail *</label><input type="email" name="email" placeholder="votre@email.com" required/></div>
+              <div class="form-group"><label>Téléphone</label><input type="tel" name="telephone" placeholder="+33 6 …"/></div>
+            </div>
+            <div class="form-group"><label>Type de demande *</label>
+              <select name="type_demande" required>
+                <option value="" disabled selected>Sélectionnez…</option>
+                <option>Consulting QHSE</option><option>Formation QHSE</option><option>Audit QHSE</option><option>Demande de devis</option><option>Autre</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Message *</label><textarea name="message" placeholder="Décrivez votre besoin, secteur d'activité et objectifs…" required></textarea></div>
+            <label class="form-check" style="margin-bottom:1.5rem"><input type="checkbox" required/> J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la politique de confidentialité. *</label>
+            <button type="submit" class="btn btn-primary btn-full" style="padding:1rem">Envoyer ma demande →</button>
+          </form>
+          <div class="form-success" id="contactSuccess">
+            <div class="form-success-icon">✅</div>
+            <h3 style="margin-bottom:0.5rem">Message envoyé !</h3>
+            <p>Merci. Nous vous répondrons dans les 24h ouvrées.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
 <!-- ═══════════════════════════════════════
      FOOTER (global)
 ═══════════════════════════════════════ -->
-<footer role="contentinfo">
+<footer>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" onclick="showPage('accueil');return false" style="display:inline-block">
+        <a href="#" onclick="showPage('accueil')" style="display:inline-block">
           <div style="font-family:'IBM Plex Serif',serif;font-size:1.2rem;font-weight:700;color:var(--white)">JML<span style="color:var(--accent)"> Consulting</span></div>
           <div style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray-400)">& Services · QHSE</div>
         </a>
         <p>Cabinet expert en Qualité, Hygiène, Sécurité et Environnement.</p>
       </div>
       <div class="footer-col"><h5>Services</h5><ul>
-        <li><a onclick="showPage('consulting');return false">Consulting QHSE</a></li>
-        <li><a onclick="showPage('formations');return false">Formation QHSE</a></li>
-        <li><a onclick="showPage('audit');return false">Audit QHSE</a></li>
+        <li><a onclick="showPage('consulting')">Consulting QHSE</a></li>
+        <li><a onclick="showPage('formations')">Formation QHSE</a></li>
+        <li><a onclick="showPage('audit')">Audit QHSE</a></li>
       </ul></div>
       <div class="footer-col"><h5>Boutique</h5><ul>
-        <li><a onclick="showPage('boutique');return false">Guides & Check-lists</a></li>
-        <li><a onclick="showPage('boutique');return false">Modèles de documents</a></li>
-        <li><a onclick="showPage('boutique');return false">Kits de démarrage</a></li>
-        <li><a onclick="showPage('boutique');return false">Abonnements</a></li>
+        <li><a onclick="showPage('boutique')">Guides & Check-lists</a></li>
+        <li><a onclick="showPage('boutique')">Modèles de documents</a></li>
+        <li><a onclick="showPage('boutique')">Kits de démarrage</a></li>
+        <li><a onclick="showPage('boutique')">Abonnements</a></li>
       </ul></div>
       <div class="footer-col"><h5>Cabinet</h5><ul>
-        <li><a onclick="showPage('a-propos');return false">À propos</a></li>
-        <li><a onclick="showPage('blog');return false">Blog & Ressources</a></li>
-        <li><a onclick="showPage('contact');return false">Contact</a></li>
+        <li><a onclick="showPage('a-propos')">À propos</a></li>
+        <li><a onclick="showPage('blog')">Blog & Ressources</a></li>
+        <li><a onclick="showPage('contact')">Contact</a></li>
       </ul></div>
       <div class="footer-col"><h5>Espace client</h5><ul>
-        <li><a onclick="showPage('connexion');return false">Se connecter</a></li>
-        <li><a onclick="showPage('connexion');return false">Créer un compte</a></li>
-        <li><a onclick="showPage('panier');return false">Mon panier</a></li>
+        <li><a onclick="showPage('connexion')">Se connecter</a></li>
+        <li><a onclick="showPage('connexion')">Créer un compte</a></li>
+        <li><a onclick="showPage('panier')">Mon panier</a></li>
         <li><a href="#">Mentions légales</a></li>
       </ul></div>
     </div>
@@ -588,136 +1509,359 @@ footer{background:var(--navy-dark);color:var(--white);padding:60px 0 0}
   </div>
 </footer>
 
-<!-- INLINE PAGES CONTENT (Simplified for space) -->
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════ -->
 <script>
-const pages = {
-  accueil: `
-    <div class="page active" id="page-accueil">
-      <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <div class="hero-badge">🏅 Cabinet expert QHSE</div>
-            <h1>L'<em>excellence QHSE</em> au service de votre performance</h1>
-            <p>JML Consulting & Services vous accompagne dans vos démarches Qualité, Hygiène, Sécurité et Environnement — du diagnostic à la certification.</p>
-            <div class="hero-actions">
-              <button class="btn btn-accent" onclick="showPage('contact')">Demander un audit gratuit →</button>
-              <button class="btn btn-outline-white" onclick="showPage('a-propos')">Découvrir le cabinet</button>
-            </div>
-            <div class="hero-certs">
-              <div class="hero-cert-item"><strong>IRCA</strong> Auditeurs certifiés</div>
-              <div class="hero-cert-item"><strong>PECB</strong> Management Systems</div>
-              <div class="hero-cert-item"><strong>ISO 9001</strong> Référentiel maîtrisé</div>
-              <div class="hero-cert-item"><strong>ISO 45001</strong> Référentiel maîtrisé</div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <div class="search-section">
-        <div class="container">
-          <div class="search-bar-main">
-            <select id="homeSearchType"><option value="">Type de besoin</option><option value="formation">Formation QHSE</option><option value="consulting">Consulting</option><option value="boutique">Document / Guide</option><option value="audit">Audit</option></select>
-            <input type="text" id="homeSearchInput" placeholder="Ex. : ISO 9001, HACCP, audit interne, DUER…" onkeydown="if(event.key==='Enter')doHomeSearch()"/>
-            <button onclick="doHomeSearch()">🔍 Rechercher</button>
-          </div>
-        </div>
-      </div>
-      <section class="section">
-        <div class="container">
-          <span class="section-label">Nos expertises</span>
-          <h2 class="section-title">Trois pôles d'excellence QHSE</h2>
-          <p class="section-sub">Une approche intégrée pour répondre à toutes vos exigences réglementaires et normatives.</p>
-          <div class="services-grid">
-            <div class="service-card"><span class="service-icon">🧩</span><h3>Consulting QHSE</h3><p>Accompagnement stratégique pour la mise en place et l'amélioration de vos systèmes de management.</p><ul><li>Diagnostic initial et analyse des écarts</li><li>Déploiement SMQ, SME, SMSS intégré</li><li>Accompagnement à la certification</li><li>Veille réglementaire continue</li></ul><a class="service-link" href="#" onclick="showPage('consulting');return false">En savoir plus →</a></div>
-            <div class="service-card"><span class="service-icon">🎓</span><h3>Formation QHSE</h3><p>Programmes professionnels pour développer les compétences QHSE de vos équipes.</p><ul><li>ISO 9001, 14001, 45001</li><li>Sensibilisation opérateurs</li><li>Auditeurs internes</li><li>Hygiène alimentaire HACCP</li></ul><a class="service-link" href="#" onclick="showPage('formations');return false">Voir le catalogue →</a></div>
-            <div class="service-card"><span class="service-icon">🔍</span><h3>Audit QHSE</h3><p>Audits rigoureux pour évaluer la conformité de vos pratiques et identifier vos axes d'amélioration.</p><ul><li>Audit interne & audit à blanc</li><li>Audit fournisseur</li><li>Audit réglementaire</li><li>Rapport & plan d'actions</li></ul><a class="service-link" href="#" onclick="showPage('audit');return false">En savoir plus →</a></div>
-          </div>
-        </div>
-      </section>
-      <div class="stats-band">
-        <div class="container">
-          <div class="stats-grid">
-            <div class="stat-item"><div class="stat-value" data-target="200" data-suffix="+">0+</div><div class="stat-desc">Entreprises accompagnées</div></div>
-            <div class="stat-item"><div class="stat-value" data-target="15" data-suffix="+">0+</div><div class="stat-desc">Années d'expertise</div></div>
-            <div class="stat-item"><div class="stat-value" data-target="98" data-suffix="%">0%</div><div class="stat-desc">Taux de satisfaction</div></div>
-            <div class="stat-item"><div class="stat-value" data-target="500" data-suffix="+">0+</div><div class="stat-desc">Formations dispensées</div></div>
-          </div>
-        </div>
-      </div>
-      <section class="section section--bg">
-        <div class="container">
-          <span class="section-label">Formations</span>
-          <h2 class="section-title">Formations à la une</h2>
-          <p class="section-sub">Nos programmes les plus demandés pour développer les compétences QHSE de vos équipes.</p>
-          <div class="formation-grid">
-            <div class="formation-card"><div class="formation-head"><span class="formation-tag">Qualité</span><div class="formation-duration">2j <small>/ 14h</small></div></div><div class="formation-body"><h3>Sensibilisation ISO 9001:2015</h3><p>Comprendre les exigences de la norme et les principes du management de la qualité.</p><div class="formation-meta"><span class="meta-tag">👤 Tout public</span><span class="meta-tag">📍 Présentiel</span></div></div><div class="formation-footer"><span class="formation-price">490€ <small>HT / pers.</small></span><button class="btn btn-primary btn-sm" onclick="showPage('formations')">Voir</button></div></div>
-            <div class="formation-card"><div class="formation-head"><span class="formation-tag">Sécurité</span><div class="formation-duration">3j <small>/ 21h</small></div></div><div class="formation-body"><h3>ISO 45001 — Management SST</h3><p>Maîtriser les exigences de la norme ISO 45001 et déployer votre SMSS.</p><div class="formation-meta"><span class="meta-tag">👤 Responsables HSE</span><span class="meta-tag">📍 Mixte</span></div></div><div class="formation-footer"><span class="formation-price">790€ <small>HT / pers.</small></span><button class="btn btn-primary btn-sm" onclick="showPage('formations')">Voir</button></div></div>
-            <div class="formation-card"><div class="formation-head"><span class="formation-tag">Audit</span><div class="formation-duration">3j <small>/ 21h</small></div></div><div class="formation-body"><h3>Auditeur interne QHSE</h3><p>Former vos auditeurs internes à la conduite d'audits selon la norme ISO 19011.</p><div class="formation-meta"><span class="meta-tag">👤 Auditeurs internes</span><span class="meta-tag">📍 Présentiel</span></div></div><div class="formation-footer"><span class="formation-price">890€ <small>HT / pers.</small></span><button class="btn btn-primary btn-sm" onclick="showPage('formations')">Voir</button></div></div>
-          </div>
-          <div style="text-align:center;margin-top:2rem"><button class="btn btn-outline" onclick="showPage('formations')">Voir tout le catalogue →</button></div>
-        </div>
-      </section>
-      <div class="cta-band"><div class="container text-center"><h2>Prêt à engager votre démarche QHSE ?</h2><p>Nos experts vous accompagnent à chaque étape. Premier échange gratuit et sans engagement.</p><button class="btn btn-primary" onclick="showPage('contact')">Demander un rendez-vous →</button></div></div>
-    </div>
-  `
-  // Additional pages will be loaded here
-};
-
-// Initialize pages
-function initPages() {
-  const container = document.getElementById('pagesContainer');
-  container.innerHTML = pages.accueil;
-}
-
-function showPage(id) {
-  // Load page content
-  if (!pages[id]) return;
-  const container = document.getElementById('pagesContainer');
-  const allPages = container.querySelectorAll('.page');
-  allPages.forEach(p => p.classList.remove('active'));
-  
-  // For demo: just show first page
-  container.innerHTML = pages[id] || pages.accueil;
-  const pg = container.querySelector('.page');
-  if (pg) pg.classList.add('active');
-  
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+/* ── NAVIGATION ── */
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const pg=document.getElementById('page-'+id);
+  if(pg){pg.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+  // Fermer le menu mobile si ouvert
+  document.getElementById('navMain').classList.remove('open');
   updateHamburger(false);
 }
 
-function toggleMenu() {
-  const nav = document.getElementById('navMain');
-  const open = nav.classList.toggle('open');
+function toggleMenu(){
+  const nav=document.getElementById('navMain');
+  const open=nav.classList.toggle('open');
   updateHamburger(open);
 }
 
-function updateHamburger(open) {
-  const hamburger = document.getElementById('hamburger');
-  const spans = hamburger.querySelectorAll('span');
-  hamburger.setAttribute('aria-expanded', open);
-  if (open) {
-    spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
-    spans[1].style.opacity = '0';
-    spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
-  } else {
-    spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+function updateHamburger(open){
+  const spans=document.querySelectorAll('.hamburger span');
+  if(open){
+    spans[0].style.transform='rotate(45deg) translate(5px,5px)';
+    spans[1].style.opacity='0';
+    spans[2].style.transform='rotate(-45deg) translate(5px,-5px)';
+  }else{
+    spans[0].style.transform='';spans[1].style.opacity='';spans[2].style.transform='';
   }
 }
 
-function doSearch() {
-  const type = document.getElementById('searchType').value;
-  const q = document.getElementById('searchInput').value;
-  if (!q) return;
-  alert('Recherche: ' + q);
+/* ── RECHERCHE ── */
+function doSearch(){
+  const type=document.getElementById('searchType').value;
+  const q=document.getElementById('searchInput').value.toLowerCase();
+  if(!q){return;}
+  if(type==='formation'||(!type&&q)){showPage(type||'formations');}
+  else if(type==='boutique'){showPage('boutique');}
+  else if(type==='blog'){showPage('blog');}
+  else{showPage('formations');}
 }
 
-function doHomeSearch() {
-  const q = document.getElementById('homeSearchInput').value;
-  if (!q) return;
-  alert('Recherche: ' + q);
+function doHomeSearch(){
+  const type=document.getElementById('homeSearchType').value;
+  const q=document.getElementById('homeSearchInput').value;
+  if(type&&type!==''){showPage(type);}else if(q){showPage('formations');}
 }
 
-// Initialize on load
-window.addEventListener('DOMContentLoaded', initPages);
+/* ── FILTRES FORMATIONS ── */
+function applyFormationFilters(){
+  const cat=document.getElementById('f-thematique').value;
+  const fmt=document.getElementById('f-format').value;
+  const dur=document.getElementById('f-duree').value;
+  const fin=document.getElementById('f-financement').value;
+  const niv=document.getElementById('f-niveau').value;
+  const cards=document.querySelectorAll('#formationGrid .formation-card');
+  let count=0;
+  cards.forEach(c=>{
+    const show=(!cat||c.dataset.cat===cat)&&(!fmt||c.dataset.format===fmt)&&(!dur||c.dataset.duree===dur)&&(!fin||c.dataset.fin===fin)&&(!niv||c.dataset.niveau===niv);
+    c.style.display=show?'':'none';
+    if(show)count++;
+  });
+  document.getElementById('formationCount').textContent=count+' formation'+(count>1?'s':'')+' trouvée'+(count>1?'s':'');
+}
+
+function filterFormations(cat){
+  document.getElementById('f-thematique').value=cat;
+  applyFormationFilters();
+}
+
+function resetFormationFilters(){
+  ['f-thematique','f-format','f-duree','f-financement','f-niveau'].forEach(id=>document.getElementById(id).value='');
+  applyFormationFilters();
+}
+
+/* ── FILTRES BOUTIQUE ── */
+function applyBoutiqueFilters(){
+  const cat=document.getElementById('b-categorie').value;
+  const theme=document.getElementById('b-thematique').value;
+  const fmt=document.getElementById('b-format').value;
+  const prix=document.getElementById('b-prix').value;
+  const cards=document.querySelectorAll('#productGrid .product-card');
+  let count=0;
+  cards.forEach(c=>{
+    const p=parseInt(c.dataset.prix==='low'?25:c.dataset.prix==='mid'?75:200);
+    const priceOk=!prix||(prix==='low'&&p<50)||(prix==='mid'&&p>=50&&p<=100)||(prix==='high'&&p>100);
+    const show=(!cat||c.dataset.cat===cat)&&(!theme||c.dataset.theme===theme)&&(!fmt||c.dataset.format===fmt)&&priceOk;
+    c.style.display=show?'':'none';
+    if(show)count++;
+  });
+  document.getElementById('boutiqueCount').textContent=count+' produit'+(count>1?'s':'');
+}
+
+function resetBoutiqueFilters(){
+  ['b-categorie','b-thematique','b-format','b-prix'].forEach(id=>document.getElementById(id).value='');
+  applyBoutiqueFilters();
+}
+
+/* ── PANIER (localStorage) ── */
+let cart=JSON.parse(localStorage.getItem('jml_cart')||'[]');
+
+function addToCart(name,type,price){
+  const existing=cart.find(i=>i.name===name);
+  if(existing){existing.qty++;}
+  else{cart.push({name,type,price,qty:1});}
+  saveCart();
+  showCartToast(name);
+}
+
+function saveCart(){
+  localStorage.setItem('jml_cart',JSON.stringify(cart));
+  updateCartBadge();
+}
+
+function updateCartBadge(){
+  const total=cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cartCount').textContent=total;
+}
+
+function showCartToast(name){
+  const t=document.createElement('div');
+  t.style.cssText='position:fixed;bottom:2rem;right:2rem;background:var(--navy);color:#fff;padding:1rem 1.5rem;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,0.2);z-index:9999;font-size:0.88rem;display:flex;align-items:center;gap:0.8rem;animation:slideIn 0.3s ease';
+  t.innerHTML='<span style="color:var(--accent)">✓</span> <div><strong style="display:block">Ajouté au panier</strong>'+name+'</div><button onclick="this.parentElement.remove()" style="background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;margin-left:1rem;font-size:1.1rem">×</button>';
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),3500);
+}
+
+function renderCart(){
+  const body=document.getElementById('cartBody');
+  const empty=document.getElementById('cartEmpty');
+  const content=document.getElementById('cartContent');
+  if(!body)return;
+  if(cart.length===0){
+    empty.style.display='block';content.querySelector('table').style.display='none';
+    content.querySelector('.cart-summary').style.display='none';
+    return;
+  }
+  empty.style.display='none';content.querySelector('table').style.display='table';
+  content.querySelector('.cart-summary').style.display='block';
+  body.innerHTML=cart.map((item,i)=>`
+    <tr>
+      <td><div class="cart-product-info"><div class="cart-product-icon">${item.type==='Formation'?'🎓':'📄'}</div><div><div class="cart-product-name">${item.name}</div><div class="cart-product-format">${item.type}</div></div></div></td>
+      <td style="color:var(--gray-400);font-size:0.85rem">${item.type}</td>
+      <td><div class="cart-qty"><button onclick="changeQty(${i},-1)">−</button><span>${item.qty}</span><button onclick="changeQty(${i},1)">+</button></div></td>
+      <td style="font-weight:600">${item.price}€</td>
+      <td style="font-weight:700;color:var(--navy)">${item.price*item.qty}€</td>
+      <td><button class="cart-remove" onclick="removeFromCart(${i})">✕</button></td>
+    </tr>
+  `).join('');
+  updateCartTotals();
+}
+
+function changeQty(i,delta){
+  cart[i].qty=Math.max(1,cart[i].qty+delta);
+  saveCart();renderCart();
+}
+
+function removeFromCart(i){
+  cart.splice(i,1);saveCart();renderCart();
+}
+
+function updateCartTotals(){
+  const promoActive=document.getElementById('promoMsg')?.style.display==='block';
+  const sub=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const subFinal=promoActive?sub*0.9:sub;
+  const tva=subFinal*0.2;
+  const ttc=subFinal+tva;
+  if(document.getElementById('cartSubtotal')){
+    document.getElementById('cartSubtotal').textContent=subFinal.toFixed(2)+'€';
+    document.getElementById('cartTVA').textContent=tva.toFixed(2)+'€';
+    document.getElementById('cartTotal').textContent=ttc.toFixed(2)+'€';
+  }
+}
+
+function applyPromo(){
+  const code=document.getElementById('promoInput').value.toUpperCase();
+  const msg=document.getElementById('promoMsg');
+  if(code==='JML10'||code==='QHSE2025'){
+    msg.style.display='block';updateCartTotals();
+  }else{
+    msg.style.display='none';
+    alert('Code promo invalide. Essayez JML10 ou QHSE2025');
+  }
+}
+
+function checkout(){
+  if(cart.length===0)return;
+  const user=JSON.parse(localStorage.getItem('jml_user')||'null');
+  if(!user){
+    if(confirm('Vous devez être connecté pour finaliser votre commande. Se connecter maintenant ?')){showPage('connexion');}
+    return;
+  }
+  // Sauvegarder la commande
+  const orders=JSON.parse(localStorage.getItem('jml_orders')||'[]');
+  orders.push({id:'JML-2025-'+String(orders.length+1).padStart(4,'0'),date:new Date().toLocaleDateString('fr-FR'),items:[...cart],total:cart.reduce((s,i)=>s+i.price*i.qty,0)});
+  localStorage.setItem('jml_orders',JSON.stringify(orders));
+  cart=[];saveCart();renderCart();
+  alert('✅ Commande confirmée ! Retrouvez vos documents dans "Mes documents".');
+  showPage('mon-compte');
+}
+
+/* ── AUTH ── */
+function login(){
+  const email=document.getElementById('loginEmail').value;
+  const pwd=document.getElementById('loginPwd').value;
+  const err=document.getElementById('loginError');
+  if(!email||!pwd){err.style.display='block';return;}
+  // Simulation — en production : appel API
+  const user={prenom:'Jean',nom:'Martin',email:email,societe:'Acme Industries'};
+  localStorage.setItem('jml_user',JSON.stringify(user));
+  err.style.display='none';
+  loadUserData();
+  showPage('mon-compte');
+}
+
+function register(){
+  const prenom=document.getElementById('regPrenom').value;
+  const nom=document.getElementById('regNom').value;
+  const email=document.getElementById('regEmail').value;
+  const pwd=document.getElementById('regPwd').value;
+  const cgu=document.getElementById('regCgu').checked;
+  if(!prenom||!nom||!email||!pwd||!cgu){alert('Veuillez remplir tous les champs obligatoires.');return;}
+  const societe=document.getElementById('regSociete').value;
+  const user={prenom,nom,email,societe};
+  localStorage.setItem('jml_user',JSON.stringify(user));
+  loadUserData();
+  showPage('mon-compte');
+}
+
+function logout(){
+  localStorage.removeItem('jml_user');
+  showPage('accueil');
+}
+
+function loadUserData(){
+  const user=JSON.parse(localStorage.getItem('jml_user')||'null');
+  if(!user)return;
+  const initials=(user.prenom[0]||'')+(user.nom[0]||'');
+  if(document.getElementById('compteAvatar'))document.getElementById('compteAvatar').textContent=initials.toUpperCase();
+  if(document.getElementById('compteName'))document.getElementById('compteName').textContent=user.prenom+' '+user.nom;
+  if(document.getElementById('compteEmail'))document.getElementById('compteEmail').textContent=user.email;
+  if(document.getElementById('welcomeMsg'))document.getElementById('welcomeMsg').textContent='Bonjour, '+user.prenom+' !';
+  // Commandes
+  const orders=JSON.parse(localStorage.getItem('jml_orders')||'[]');
+  if(document.getElementById('dashCommandes'))document.getElementById('dashCommandes').textContent=orders.length;
+  if(document.getElementById('commandesList')){
+    document.getElementById('commandesList').innerHTML=orders.length===0
+      ?'<p style="color:var(--gray-400);text-align:center;padding:2rem">Aucune commande pour l\'instant.</p>'
+      :orders.map(o=>`<div class="doc-item"><span class="doc-icon">📦</span><div><div class="doc-name">Commande ${o.id}</div><div class="doc-date">${o.date} · ${o.total}€ HT</div></div><button class="btn btn-outline btn-sm" onclick="alert('Détails commande ${o.id}')">Détails</button></div>`).join('');
+  }
+  // Profil
+  if(document.getElementById('profPrenom'))document.getElementById('profPrenom').value=user.prenom;
+  if(document.getElementById('profNom'))document.getElementById('profNom').value=user.nom;
+  if(document.getElementById('profEmail'))document.getElementById('profEmail').value=user.email;
+}
+
+function saveProfil(){
+  const user=JSON.parse(localStorage.getItem('jml_user')||'{}');
+  user.prenom=document.getElementById('profPrenom').value;
+  user.nom=document.getElementById('profNom').value;
+  user.email=document.getElementById('profEmail').value;
+  localStorage.setItem('jml_user',JSON.stringify(user));
+  loadUserData();
+  alert('✅ Profil mis à jour !');
+}
+
+function showCompteSection(id){
+  document.querySelectorAll('.compte-nav-item').forEach(i=>i.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  ['dashboard','commandes','formations','documents','profil'].forEach(s=>{
+    const el=document.getElementById('section-'+s);
+    if(el)el.style.display=s===id?'block':'none';
+  });
+  if(id==='commandes'||id==='documents')loadUserData();
+}
+
+/* ── CONTACT FORM ── */
+async function handleContact(e){
+  e.preventDefault();
+  const form=document.getElementById('contactForm');
+  const success=document.getElementById('contactSuccess');
+  try{
+    const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+    if(res.ok){form.style.display='none';success.style.display='block';}
+    else{alert('Erreur d\'envoi. Veuillez nous contacter par téléphone.');}
+  }catch{
+    // Démonstration offline
+    form.style.display='none';success.style.display='block';
+  }
+}
+
+/* ── NEWSLETTER ── */
+function subscribeNewsletter(e){
+  e.preventDefault();
+  alert('✅ Inscription confirmée ! Vous recevrez notre prochaine newsletter QHSE.');
+  e.target.reset();
+}
+
+/* ── COMPTEURS ANIMÉS ── */
+const counterObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target;
+      const target=parseInt(el.dataset.target);
+      const suffix=el.dataset.suffix||'';
+      const dur=1600;const start=performance.now();
+      const tick=now=>{
+        const p=Math.min((now-start)/dur,1);
+        const ease=1-Math.pow(1-p,3);
+        el.textContent=Math.round(ease*target)+suffix;
+        if(p<1)requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      counterObs.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('[data-target]').forEach(el=>counterObs.observe(el));
+
+/* ── EMAIL OBFUSCATION — construction JS (anti-scraping) ── */
+(function(){
+  // L'adresse est construite en JS, jamais écrite en clair dans le HTML
+  // Les robots ne l'indexent pas, les humains la voient normalement
+  var p1='contact.jmlconsultings';
+  var at=String.fromCharCode(64); // @
+  var p2='gmail'+String.fromCharCode(46)+'com'; // .
+  var full=p1+at+p2;
+  var mailto='mailto:'+full;
+
+  // Topbar
+  var tb=document.getElementById('topbarEmail');
+  if(tb){
+    tb.innerHTML='<a href="'+mailto+'" style="color:rgba(255,255,255,0.85);text-decoration:none">'+full+'</a>';
+  }
+  // Page contact
+  var ct=document.getElementById('contactEmail');
+  if(ct){
+    ct.innerHTML='<a href="'+mailto+'" style="color:var(--text);text-decoration:none">'+full+'</a>';
+  }
+})();
+
+/* ── INIT ── */
+updateCartBadge();
+const savedUser=localStorage.getItem('jml_user');
+if(savedUser)loadUserData();
+
+// Render cart on page show
+const origShowPage=showPage;
+window.showPage=function(id){
+  origShowPage(id);
+  if(id==='panier')renderCart();
+  if(id==='mon-compte'){loadUserData();}
+};
 </script>
 
 </body>
